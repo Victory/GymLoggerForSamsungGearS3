@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widget xmlns:tizen="http://tizen.org/ns/widgets" xmlns="http://www.w3.org/ns/widgets" id="https://dfhu.org/GymLogger" version="1.0.0" viewmodes="maximized">
+    <tizen:application id="N5WBVedKoP.GymLogger" package="N5WBVedKoP" required_version="3.0"/>
+    <author href="https://github.com/Victory">Victory</author>
+    <content src="index.html"/>
+    <feature name="http://tizen.org/feature/screen.size.all"/>
+    <icon src="gym.png"/>
+    <license>Apache 2.0</license>
+    <name>Gym Logger</name>
+    <tizen:privilege name="http://tizen.org/privilege/filesystem.write"/>
+    <tizen:privilege name="http://tizen.org/privilege/filesystem.read"/>
+    <tizen:profile name="wearable"/>
+</widget>
