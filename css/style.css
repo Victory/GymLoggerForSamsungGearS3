@@ -15,9 +15,8 @@ body {
     height:320px;
 }
 
-
-.content_text {
+#mainBox {
     font-weight:bold;
-    font-size:5em;
+    font-size:3em;
     color:#fff;
 }
