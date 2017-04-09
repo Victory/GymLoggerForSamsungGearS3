@@ -1,4 +1,6 @@
 (function() {
+  var vq = window.vQuery;
+
   var bindDefaultKeys = function() {
     // add eventListener for tizenhwkey
     document.addEventListener('tizenhwkey', function(e) {
@@ -10,11 +12,15 @@
     });
   };
 
+  var bindHomeClick = function() {
+    vq('#mainBox').on('click', function (evt) {
+      vq('#mainBox').load('home.html');
+    });
+  };
+
   var init = function() {
     bindDefaultKeys();
-    console.log('we init now');
-    console.log(vQuery);
-    console.log(vPromise);
+    bindHomeClick();
   };
 
   window.onload = init;
