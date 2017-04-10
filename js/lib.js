@@ -62,9 +62,8 @@
 
       var elm = vq.elms[0];
 
-      console.log(elm);
-      var ok = function (html) {
-        elm.html(html);
+      var ok = function (xhr) {
+        html(xhr.responseText);
       };
 
       var notOk = function (err) {
