@@ -13,8 +13,8 @@
   };
 
   var bindHomeClick = function() {
-    vq('#mainBox').on('click', function (evt) {
-      vq('#mainBox').load('home.html');
+    vq('#chooseExercise').on('click', function (evt) {
+      vq("#mainBox").load('choose-exercise.html');
     });
   };
 

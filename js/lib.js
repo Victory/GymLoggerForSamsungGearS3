@@ -3,8 +3,19 @@
   var Promise = window.vPromise;
 
   var vQuery = function(selector) {
-    this.elms = qs(selector);
+    this.elms = getElms(selector);
     var vq = this;
+
+    function getElms(input) {
+      if (typeof input === 'string') {
+        return qs(input);
+      }
+      if (input instanceof HTMLElement) {
+        return [input];
+      }
+
+      throw 'Not implemented in getElms';
+    };
 
     /** query select all */
     function qs(selector) {
@@ -74,10 +85,14 @@
     };
 
     var on = function (event, cb) {
-      console.log('on', event);
       for (var ii = 0; ii < vq.elms.length; ii++) {
-        console.log(vq.elms[ii]);
-        vq.elms[ii].addEventListener(event, cb);
+        (function (ii) {
+          document.body.addEventListener(event, function (evt) {
+            if (vq.elms[ii] === evt.target) {
+              cb.call(vq.elms[ii], evt);
+            }
+          });
+        })(ii);
       }
     };
 
