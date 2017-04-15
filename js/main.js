@@ -1,5 +1,8 @@
 (function() {
   var db;
+  var flavors = {
+    weightReps: 1
+  }
 
   var bindDefaultKeys = function() {
     // add eventListener for tizenhwkey
@@ -29,13 +32,29 @@
     var version = '0.1';
     var dbName = 'gymlogger';
     var dbDisplayName = 'gymlogger_db'
-    var dbSize = 2 << 20; 
+    var dbSize = 2 * (1 << 20);
     
     var cb = function (database) {
         console.log('created db');
     };
 
     db = openDatabase(dbName, version, dbDisplayName, dbSize, cb);
+
+    db.transaction(function (tx) {
+
+      var sql = 'CREATE TABLE IF NOT EXISTS `exercises` (' +
+          '`name` STRING, ' +
+          '`flavor` INTEGER ' +
+          ')';
+      tx.executeSql(sql);
+
+      sql = "INSERT INTO `exercises` (`name`, `flavor`) VALUES ('bench press'," + flavors.weightReps + ")";
+      tx.executeSql(sql);
+
+    }, function (tx, err) {
+      console.error('could not create table', err);
+    });
+
   };
 
   var init = function() {
